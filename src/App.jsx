@@ -6,7 +6,7 @@ import { Github, Linkedin, Globe, Mail, ExternalLink, ServerCog, Boxes, Code2, D
 
 function Pill({ children }) {
   return (
-    <span className="inline-flex items-center rounded-full bg-white/60 backdrop-blur px-3 py-1 text-xs font-medium text-slate-700 ring-1 ring-slate-200">
+    <span className="inline-flex items-center rounded-full bg-white/10 backdrop-blur px-3 py-1 text-xs font-medium text-slate-200 ring-1 ring-white/10">
       {children}
     </span>
   )
@@ -14,7 +14,7 @@ function Pill({ children }) {
 
 function Tag({ children }) {
   return (
-    <span className="rounded-md bg-slate-900/80 text-white text-[11px] px-2 py-1">{children}</span>
+    <span className="rounded-md bg-slate-800/80 text-slate-100 text-[11px] px-2 py-1 ring-1 ring-white/10">{children}</span>
   )
 }
 
@@ -53,14 +53,12 @@ export default function App() {
   )
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0f172a] via-[#0b1220] to-[#0b1220] text-slate-100">
+    <div className="min-h-screen text-slate-100">
       <Navbar />
 
       {/* Hero */}
       <section className="relative overflow-hidden pt-24" id="home">
-        <div className="absolute inset-0">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(1000px_600px_at_80%_-20%,rgba(99,102,241,0.35),transparent)]" />
-        </div>
+        <div className="absolute inset-0 bg-grid-slate opacity-40 mask-gradient" />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-10 items-center">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="py-6">
@@ -70,17 +68,17 @@ export default function App() {
                 <Pill>Azure</Pill>
                 <Pill>Full‑Stack</Pill>
               </div>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight gradient-text">
                 Software Engineer focused on .NET & Angular
               </h1>
-              <p className="mt-5 text-slate-300 text-lg leading-relaxed">
+              <p className="mt-5 text-slate-300 text-lg leading-relaxed max-w-xl">
                 I build robust, cloud-ready platforms with clean architecture, solid testing, and delightful user experiences.
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
-                <a href="#projects" className="inline-flex items-center gap-2 rounded-lg bg-indigo-500 hover:bg-indigo-400 text-white px-5 py-3 font-medium transition-colors">
+                <a href="#projects" className="inline-flex items-center gap-2 rounded-lg bg-indigo-500/90 hover:bg-indigo-400 text-white px-5 py-3 font-medium transition-colors">
                   <ExternalLink className="h-4 w-4" /> View Projects
                 </a>
-                <a href="#contact" className="inline-flex items-center gap-2 rounded-lg bg-white/10 hover:bg-white/20 text-white px-5 py-3 font-medium transition-colors ring-1 ring-white/20">
+                <a href="#contact" className="inline-flex items-center gap-2 rounded-lg bg-white/10 hover:bg-white/20 text-white px-5 py-3 font-medium transition-colors ring-1 ring-white/10">
                   <Mail className="h-4 w-4" /> Contact
                 </a>
                 <a href="https://github.com/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-lg bg-white text-slate-900 px-5 py-3 font-medium">
@@ -92,7 +90,7 @@ export default function App() {
               </div>
             </motion.div>
 
-            <motion.div initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.7, delay: 0.1 }} className="relative h-[420px] sm:h-[520px] lg:h-[560px]">
+            <motion.div initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.7, delay: 0.1 }} className="relative h-[420px] sm:h-[520px] lg:h-[560px] rounded-2xl glass">
               <Spline scene="https://prod.spline.design/VJLoxp84lCdVfdZu/scene.splinecode" style={{ width: '100%', height: '100%' }} />
               <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#0b1220] to-transparent" />
             </motion.div>
@@ -131,7 +129,7 @@ export default function App() {
           <h2 className="text-2xl font-bold mb-8">Skills</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {skills.map((group) => (
-              <div key={group.label} className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 shadow-[0_0_1px_rgba(255,255,255,0.15)]">
+              <div key={group.label} className="rounded-2xl glass p-6 hover-card">
                 <div className="flex items-center gap-3">
                   <div className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-500/20 text-indigo-300">
                     {group.icon}
@@ -158,7 +156,7 @@ export default function App() {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {projects.map((p) => (
-              <motion.article whileHover={{ y: -4 }} key={p.title} className="group rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition-all">
+              <motion.article whileHover={{ y: -4 }} key={p.title} className="group rounded-2xl glass p-6 hover-card">
                 <div className="h-28 rounded-xl bg-gradient-to-br from-indigo-500/30 via-fuchsia-500/20 to-cyan-500/20 ring-1 ring-white/10" />
                 <h3 className="mt-4 text-lg font-semibold">{p.title}</h3>
                 <p className="mt-2 text-sm text-slate-300">{p.blurb}</p>
@@ -200,7 +198,7 @@ export default function App() {
               company: 'Consultancy',
               period: '2015 — 2018',
               desc: 'Delivered line-of-business apps with clean architecture and automated testing suites.',
-            }].map((e, i) => (
+            }].map((e) => (
               <div key={e.role} className="mb-8">
                 <div className="absolute -left-1.5 mt-1 h-3 w-3 rounded-full bg-indigo-400 ring-2 ring-[#0b1220]" />
                 <h3 className="font-semibold">{e.role} · <span className="text-slate-300">{e.company}</span></h3>
@@ -234,7 +232,7 @@ export default function App() {
                 </a>
               </div>
             </div>
-            <form onSubmit={(e) => e.preventDefault()} className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 space-y-4">
+            <form onSubmit={(e) => e.preventDefault()} className="rounded-2xl glass p-6 space-y-4">
               <div>
                 <label className="text-sm text-slate-300">Name</label>
                 <input className="mt-1 w-full rounded-md bg-white/5 px-3 py-2 ring-1 ring-white/10 focus:ring-2 focus:ring-indigo-400 outline-none" placeholder="Your name" />
